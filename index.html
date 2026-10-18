@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela de Iconografía Tradicional Ortodoxa Rusa | San Andrei Rublev</title>
+    <!-- Tailwind CSS CDN xoce-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FFF8DC',
+                            300: '#F3E086',
+                            400: '#E6CA52',
+                            500: '#D4AF37', /* Pan de Oro Clásico */
+                            600: '#C5A059',
+                            700: '#856200',
+                        },
+                        russianBlue: {
+                            800: '#152538',
+                            900: '#0D1B2A', /* Azul Bizantino Nocturno */
+                            950: '#070E17',
+                        },
+                        crimson: {
+                            800: '#6B141E',
+                            900: '#4A0E17', /* Rojo Vino / Imperial */
+                            950: '#2A0509',
+                        },
+                        parchment: {
+                            50: '#FDFBF7', /* Pergamino Sagrado */
+                            100: '#F5EFE0',
+                            200: '#E8DFCA',
+                            300: '#D6C7A1',
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'halo-glow': 'radial-gradient(circle, rgba(212,175,55,0.18) 0%, rgba(7,14,23,0) 70%)',
+                        'gold-gradient': 'linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .text-gold-metallic {
+            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 30%, #B38728 60%, #FBF5B7 80%, #AA771C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-gold-metallic {
+            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 30%, #B38728 70%, #AA771C 100%);
+        }
+
+        /* Resplandor místico */
+        @keyframes haloPulse {
+            0%, 100% { opacity: 0.20; transform: scale(0.98); }
+            50% { opacity: 0.50; transform: scale(1.02); }
+        }
+        .animate-halo {
+            animation: haloPulse 7s infinite ease-in-out;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070E17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #856200;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-russianBlue-950 text-parchment-50 font-sans selection:bg-gold-500 selection:text-russianBlue-950 antialiased overflow-x-hidden">
+
+    <!-- MENSAJE DE ÉXITO DE ENVÍO -->
+    <div id="exito" class="hidden target:block fixed top-24 left-1/2 -translate-x-1/2 z-50 w-11/12 max-w-xl bg-crimson-900 border-2 border-gold-500 p-6 rounded-xl shadow-2xl text-center">
+        <div class="w-12 h-12 rounded-full border border-gold-400 bg-russianBlue-950 mx-auto flex items-center justify-center mb-3">
+            <svg class="w-7 h-7 fill-gold-400" viewBox="0 0 24 24">
+                <path d="M11 2h2v3h4v2h-4v2h5v2h-5v5h3v2h-3v4h-2v-4H8v-2h3v-5H6v-2h5V7H7V5h4V2zm-2 15h6l-6 2v-2z"/>
+            </svg>
+        </div>
+        <h3 class="font-cinzel text-xl font-bold text-gold-metallic mb-2">¡Спаси Господи! (Solicitud Recibida)</h3>
+        <p class="font-serif text-parchment-100 text-sm mb-4">Tu mensaje ha sido enviado correctamente a nuestro taller. Nos pondremos en contacto contigo a la brevedad posible para la admisión vocacional.</p>
+        <a href="#inicio" class="inline-block px-6 py-2 bg-gold-metallic text-russianBlue-950 font-cinzel font-bold text-xs uppercase rounded hover:brightness-110">Aceptar y Continuar</a>
+    </div>
+
+    <!-- ENCABEZADO LITÚRGICO -->
+    <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-russianBlue-950/95 backdrop-blur-md border-b border-gold-500/20" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 py-2">
+                <!-- Logo Cruz Ortodoxa Rusa de 8 Puntas -->
+                <a href="#" class="flex items-center gap-3.5 group">
+                    <div class="w-11 h-11 rounded-full border-2 border-gold-500/70 flex items-center justify-center bg-crimson-900 shadow-lg group-hover:border-gold-400 transition-colors">
+                        <svg class="w-6 h-6 fill-gold-400 group-hover:scale-105 transition-transform" viewBox="0 0 24 24">
+                            <path d="M11 2h2v3h4v2h-4v2h5v2h-5v5h3v2h-3v4h-2v-4H8v-2h3v-5H6v-2h5V7H7V5h4V2zm-2 15h6l-6 2v-2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-cinzel text-base sm:text-lg font-bold tracking-widest text-gold-metallic block">СВЯТАЯ ИКОНА</span>
+                        <span class="font-serif text-[10px] sm:text-xs text-parchment-300 tracking-widest block -mt-1 uppercase">Taller Ortodoxo</span>
+                    </div>
+                </a>
+
+                <!-- Navegación Principal -->
+                <nav class="hidden lg:flex items-center space-x-7 font-cinzel text-xs tracking-widest uppercase">
+                    <a href="#inicio" class="text-parchment-200 hover:text-gold-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold-400 hover:after:w-full after:transition-all">Inicio</a>
+                    <a href="#tradicion" class="text-parchment-200 hover:text-gold-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold-400 hover:after:w-full after:transition-all">Tradición</a>
+                    <a href="#cursos" class="text-parchment-200 hover:text-gold-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold-400 hover:after:w-full after:transition-all">Cursos</a>
+                    <a href="#tecnica" class="text-parchment-200 hover:text-gold-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold-400 hover:after:w-full after:transition-all">Técnica Canónica</a>
+                    <a href="#galeria" class="text-parchment-200 hover:text-gold-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold-400 hover:after:w-full after:transition-all">Galería</a>
+                </nav>
+
+                <!-- Botón de Admisión Vocacional -->
+                <div class="hidden sm:flex items-center">
+                    <a href="#admision" class="px-5 py-2.5 rounded-full bg-gold-metallic text-russianBlue-950 font-cinzel text-xs font-bold tracking-wider hover:brightness-110 transition-all shadow-lg shadow-gold-500/10 flex items-center gap-2">
+                        <span>Inscripción Vocacional</span>
+                        <i class="fa-solid fa-hands-praying text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-parchment-200 hover:text-gold-400 focus:outline-none p-2" aria-label="Abrir Menú">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-russianBlue-900 border-b border-gold-500/30 px-6 pt-3 pb-6 space-y-3 font-cinzel text-sm">
+            <a href="#inicio" class="mobile-link block py-2 text-parchment-200 hover:text-gold-400 border-b border-russianBlue-800">Inicio</a>
+            <a href="#tradicion" class="mobile-link block py-2 text-parchment-200 hover:text-gold-400 border-b border-russianBlue-800">La Sacra Tradición</a>
+            <a href="#cursos" class="mobile-link block py-2 text-parchment-200 hover:text-gold-400 border-b border-russianBlue-800">Programas de Formación</a>
+            <a href="#tecnica" class="mobile-link block py-2 text-parchment-200 hover:text-gold-400 border-b border-russianBlue-800">Técnica Canónica</a>
+            <a href="#galeria" class="mobile-link block py-2 text-parchment-200 hover:text-gold-400 border-b border-russianBlue-800">Galería de Iconos</a>
+            <a href="#admision" class="mobile-link mt-4 block text-center py-3 bg-gold-metallic text-russianBlue-950 font-bold rounded">Solicitar Admisión</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-b from-russianBlue-950 via-russianBlue-900 to-russianBlue-950">
+        <!-- Fondos y resplandor -->
+        <div class="absolute inset-0 bg-halo-glow animate-halo pointer-events-none"></div>
+        <div class="absolute top-1/4 -left-32 w-96 h-96 bg-crimson-900/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 -right-32 w-96 h-96 bg-gold-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Marco Ornamental -->
+        <div class="absolute inset-4 sm:inset-8 border border-gold-500/20 pointer-events-none rounded-lg flex items-center justify-between p-3">
+            <div class="w-5 h-5 border-t-2 border-l-2 border-gold-400"></div>
+            <div class="w-5 h-5 border-t-2 border-r-2 border-gold-400"></div>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 z-10">
+            <!-- Emblema de la Cruz Ortodoxa Rusa -->
+            <div class="inline-flex items-center justify-center mb-6">
+                <div class="h-px w-16 bg-gradient-to-r from-transparent to-gold-400"></div>
+                <div class="mx-4 text-gold-400">
+                    <svg class="w-8 h-8 fill-gold-400" viewBox="0 0 24 24">
+                        <path d="M11 2h2v3h4v2h-4v2h5v2h-5v5h3v2h-3v4h-2v-4H8v-2h3v-5H6v-2h5V7H7V5h4V2zm-2 15h6l-6 2v-2z"/>
+                    </svg>
+                </div>
+                <div class="h-px w-16 bg-gradient-to-l from-transparent to-gold-400"></div>
+            </div>
+
+            <p class="font-serif italic text-gold-300 text-lg sm:text-2xl mb-3 tracking-wide">
+                «El icono no se pinta, se escribe con oración en la Luz Increada»
+            </p>
+
+            <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 text-parchment-50 leading-tight">
+                Escuela de Iconografía Ortodoxa  <br><span class="text-gold-metallic"></span>
+            </h1>
+
+            <p class="font-serif text-lg sm:text-xl text-parchment-200 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                Aprende la teología visual y el arte sagrado canónico. Cultiva el espíritu mediante la técnica ancestral, el temple al huevo y el pan de oro puro.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#cursos" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gold-metallic text-russianBlue-950 font-cinzel font-bold text-xs uppercase tracking-widest shadow-xl shadow-gold-500/20 hover:scale-105 transition-all">
+                    Ver Cursos Teológicos
+                </a>
+                <a href="#admision" class="w-full sm:w-auto px-8 py-4 rounded-full border border-gold-500/50 hover:border-gold-400 text-parchment-100 hover:text-gold-300 font-cinzel font-semibold text-xs uppercase tracking-widest bg-russianBlue-900/60 backdrop-blur-sm transition-all">
+                    Inscripción y Admisión
+                </a>
+            </div>
+
+            <!-- Pilares de la Tradición -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-gold-500/20 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <span class="block font-cinzel text-2xl font-bold text-gold-metallic">San Andrei Rublev</span>
+                    <span class="font-serif text-xs text-parchment-300 uppercase tracking-widest"></span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-cinzel text-2xl font-bold text-gold-metallic">Teófanes el Griego</span>
+                    <span class="font-serif text-xs text-parchment-300 uppercase tracking-widest"></span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-cinzel text-2xl font-bold text-gold-metallic">Canon Litúrgico</span>
+                    <span class="font-serif text-xs text-parchment-300 uppercase tracking-widest">Fidelidad Dogmática</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-cinzel text-2xl font-bold text-gold-metallic">Oración y Ayuno</span>
+                    <span class="font-serif text-xs text-parchment-300 uppercase tracking-widest">Praxis Ascética</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SACRA TRADICIÓN -->
+    <section id="tradicion" class="py-24 bg-russianBlue-900 relative border-t border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="relative z-10 rounded-xl overflow-hidden border-2 border-gold-500/40 shadow-2xl">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/14/11/44/maria-1592567_1280.jpg" alt="Icono Ortodoxo Ruso" class="w-full h-[500px] object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 w-full h-full border-2 border-crimson-800 rounded-xl -z-0 hidden sm:block"></div>
+                </div>
+
+                <div>
+                    <h2 class="font-cinzel text-xs text-gold-400 font-bold tracking-widest uppercase mb-2">Fundamento Espiritual</h2>
+                    <h3 class="font-cinzel text-3xl sm:text-5xl font-bold text-parchment-50 mb-6">El Icono Ortodoxo: Ventana a la Eternidad</h3>
+                    <p class="font-serif text-lg text-parchment-200 leading-relaxed mb-4">
+                        En la Santa Iglesia Ortodoxa, el icono no es una obra pictórica subjetiva ni un elemento puramente decorativo. Es **Teología contemplativa encarnada en materia divinizada**, una ventana sagrada mediante la cual el cielo abraza a la tierra.
+                    </p>
+                    <p class="font-serif text-parchment-300 leading-relaxed mb-6">
+                        Siguiendo la herencia venerable de **San Andrei Rublev y Dionisio**, enseñamos que el iconógrafo dispone su alma mediante la Oración de Jesús, el ayuno y la meditación litúrgica antes de tocar la tabla sagrada.
+                    </p>
+
+                    <div class="space-y-4 border-t border-gold-500/20 pt-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-crimson-900 flex items-center justify-center text-gold-400 border border-gold-500/40 flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-scroll text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-cinzel text-base font-bold text-gold-300">Fidelidad al Canon Podlinnik</h4>
+                                <p class="font-serif text-sm text-parchment-300">Estudio riguroso de los manuales canónicos de trazado y las enseñanzas dogmáticas de los Santos Padres.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-crimson-900 flex items-center justify-center text-gold-400 border border-gold-500/40 flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-dove text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-cinzel text-base font-bold text-gold-300">Preservación Vocacional Sin Fines Lucrativos</h4>
+                                <p class="font-serif text-sm text-parchment-300">Nuestra enseñanza está consagrada a la transmisión espiritual del arte sacro y la selección por vocación.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CURSOS -->
+    <section id="cursos" class="py-24 bg-russianBlue-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-cinzel text-xs text-gold-400 font-bold tracking-widest uppercase mb-2">Transmisión del Saber Sacro</h2>
+                <h3 class="font-cinzel text-3xl sm:text-5xl font-bold text-parchment-50">Programas de Formación Tradicional</h3>
+                <p class="font-serif text-parchment-200 text-lg mt-3 max-w-2xl mx-auto">Enseñanza dividida por niveles de progreso espiritual y destreza técnica.</p>
+                <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Curso 1 -->
+                <div class="bg-russianBlue-900 border border-gold-500/20 rounded-xl overflow-hidden hover:border-gold-500/60 transition-all group flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2018/04/25/17/56/virgin-mary-3350145_1280.jpg" alt="Tabla y Levkas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-russianBlue-900 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-crimson-900/90 border border-gold-500/40 text-gold-300 text-xs font-cinzel px-3 py-1 rounded-full font-semibold">
+                                Nivel Principiante
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-cinzel text-xl font-bold text-gold-300 mb-3 group-hover:text-gold-400 transition-colors">
+                                Introducción al Levkas y Dibujo Sacro
+                            </h4>
+                            <p class="font-serif text-parchment-200 text-sm leading-relaxed mb-4">
+                                Preparación ceremonial de la madera de tilo, encolado con cola de conejo, colocación del lienzo (*pavoloka*) y aplicación de 12 capas de alabastro (*levkas*).
+                            </p>
+                            <ul class="text-xs text-parchment-300 space-y-2 mb-6 font-sans">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-cross text-gold-500 text-[10px]"></i> Teología de la madera e incisión de Kovcheg</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-cross text-gold-500 text-[10px]"></i> Estudio del dibujo en el Podlinnik</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-cross text-gold-500 text-[10px]"></i> Pulido a espejo para recibir la luz</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-russianBlue-800">
+                        <button onclick="openCourseModal('curso-1')" class="w-full py-3 border border-gold-500/40 hover:bg-gold-500 hover:text-russianBlue-950 text-gold-300 rounded font-cinzel text-xs font-bold transition-all uppercase tracking-wider">
+                            Ver Temario Litúrgico
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Curso 2 -->
+                <div class="bg-russianBlue-900 border border-gold-500/40 rounded-xl overflow-hidden hover:border-gold-500 transition-all group flex flex-col justify-between shadow-2xl relative">
+                    <div class="absolute top-0 right-0 bg-gold-metallic text-russianBlue-950 text-[10px] font-bold font-cinzel px-3 py-1 rounded-bl-lg z-10 uppercase tracking-widest">
+                        Programa Central
+                    </div>
+                    <div>
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2019/08/23/17/32/pantocrator-4426119_1280.jpg" alt="Pigmentos y Pan de Oro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-russianBlue-900 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-crimson-900/90 border border-gold-500/40 text-gold-300 text-xs font-cinzel px-3 py-1 rounded-full font-semibold">
+                                Nivel Intermedio
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-cinzel text-xl font-bold text-gold-300 mb-3 group-hover:text-gold-400 transition-colors">
+                                Temple al Huevo, Pigmentos y Dorado
+                            </h4>
+                            <p class="font-serif text-parchment-200 text-sm leading-relaxed mb-4">
+                                Molienda manual de minerales sagrados (lapislázuli, malaquita, cinabrio), preparación del temple de yema y aplicación de pan de oro puro de 23.75K bruñido con ágata.
+                            </p>
+                            <ul class="text-xs text-parchment-300 space-y-2 mb-6 font-sans">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-cross text-gold-500 text-[10px]"></i> Preparación del Bolo Armenio</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-cross text-gold-500 text-[10px]"></i> Dorado al agua y bruñido a espejo</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-cross text-gold-500 text-[10px]"></i> Emulsiones orgánicas minerales</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-russianBlue-800">
+                        <button onclick="openCourseModal('curso-2')" class="w-full py-3 bg-gold-metallic text-russianBlue-950 hover:brightness-110 rounded font-cinzel text-xs font-bold transition-all uppercase tracking-wider">
+                            Ver Temario Litúrgico
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Curso 3 -->
+                <div class="bg-russianBlue-900 border border-gold-500/20 rounded-xl overflow-hidden hover:border-gold-500/60 transition-all group flex flex-col justify-between shadow-xl">
+                    <div>
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2017/08/19/14/50/church-2658775_1280.jpg" alt="Pantocrátor y Teotokos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                            <div class="absolute inset-0 bg-gradient-to-t from-russianBlue-900 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-crimson-900/90 border border-gold-500/40 text-gold-300 text-xs font-cinzel px-3 py-1 rounded-full font-semibold">
+                                Nivel Avanzado
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-cinzel text-xl font-bold text-gold-300 mb-3 group-hover:text-gold-400 transition-colors">
+                                Iconografía de la Teotokos y el Pantocrátor
+                            </h4>
+                            <p class="font-serif text-parchment-200 text-sm leading-relaxed mb-4">
+                                Especialización superior en los rostros sagrados, la mirada contemplativa, modelado de veladuras oscuras (*Sankir*) e iluminación divina con líneas de oro (*Asist*).
+                            </p>
+                            <ul class="text-xs text-parchment-300 space-y-2 mb-6 font-sans">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-cross text-gold-500 text-[10px]"></i> Modelado del rostro divina (Sankir y Okhrenie)</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-cross text-gold-500 text-[10px]"></i> Trazo fino de Asist de oro en ropajes</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-cross text-gold-500 text-[10px]"></i> Consagración y acabado en barniz Olifa</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-russianBlue-800">
+                        <button onclick="openCourseModal('curso-3')" class="w-full py-3 border border-gold-500/40 hover:bg-gold-500 hover:text-russianBlue-950 text-gold-300 rounded font-cinzel text-xs font-bold transition-all uppercase tracking-wider">
+                            Ver Temario Litúrgico
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO TÉCNICO LITÚRGICO -->
+    <section id="tecnica" class="py-24 bg-russianBlue-900 relative overflow-hidden border-t border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-cinzel text-xs text-gold-400 font-bold tracking-widest uppercase mb-2">Praxis Sacra Rusa</h2>
+                <h3 class="font-cinzel text-3xl sm:text-5xl font-bold text-parchment-50">Técnica Litúrgica Tradicional Paso a Paso</h3>
+                <p class="font-serif text-parchment-200 text-lg mt-3 max-w-2xl mx-auto">Selecciona cada etapa para contemplar el proceso espiritual y artesanal.</p>
+                <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Pestañas de Pasos -->
+            <div class="flex items-center justify-start lg:justify-center overflow-x-auto pb-4 gap-2 no-scrollbar" id="steps-tabs">
+                <button onclick="selectStep(1)" id="tab-step-1" class="step-tab flex-shrink-0 px-5 py-3 rounded-t-lg font-cinzel text-xs font-bold transition-all border-b-2 border-gold-500 bg-russianBlue-950 text-gold-300">
+                    1. Tabla y Levkas
+                </button>
+                <button onclick="selectStep(2)" id="tab-step-2" class="step-tab flex-shrink-0 px-5 py-3 rounded-t-lg font-cinzel text-xs font-bold transition-all border-b-2 border-transparent text-parchment-300 hover:text-gold-300">
+                    2. Grafia Canónica
+                </button>
+                <button onclick="selectStep(3)" id="tab-step-3" class="step-tab flex-shrink-0 px-5 py-3 rounded-t-lg font-cinzel text-xs font-bold transition-all border-b-2 border-transparent text-parchment-300 hover:text-gold-300">
+                    3. Sankir y Pigmentos
+                </button>
+                <button onclick="selectStep(4)" id="tab-step-4" class="step-tab flex-shrink-0 px-5 py-3 rounded-t-lg font-cinzel text-xs font-bold transition-all border-b-2 border-transparent text-parchment-300 hover:text-gold-300">
+                    4. Dorado en Pan de Oro
+                </button>
+                <button onclick="selectStep(5)" id="tab-step-5" class="step-tab flex-shrink-0 px-5 py-3 rounded-t-lg font-cinzel text-xs font-bold transition-all border-b-2 border-transparent text-parchment-300 hover:text-gold-300">
+                    5. Olifa y Consagración
+                </button>
+            </div>
+
+            <!-- Contenidos de los Pasos -->
+            <div class="bg-russianBlue-950 border border-gold-500/30 rounded-b-xl rounded-tr-xl p-6 sm:p-10 shadow-2xl relative min-h-[360px]">
+                <!-- Paso 1 -->
+                <div id="content-step-1" class="step-content grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="text-xs font-cinzel text-gold-400 font-bold uppercase tracking-widest block mb-1">Etapa I</span>
+                        <h4 class="font-cinzel text-2xl sm:text-3xl font-bold text-gold-300 mb-4">Tabla de Tilo y Elaboración del Levkas</h4>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            Se prepara la madera de tilo labrando el *Kovcheg* (rebaje sagrado). Se adhiere el lienzo de lino (*pavoloka*) con cola orgánica animal.
+                        </p>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            Posteriormente se aplican 12 capas de alabastro o creta (*Levkas*). Tras el secado, la superficie se lija con reverencia hasta obtener la pulcritud absoluta de la luz impecable.
+                        </p>
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden border border-gold-500/30">
+                        <img src="pre.png" alt="Tabla y Levkas" class="w-full h-80 object-cover">
+                    </div>
+                </div>
+
+                <!-- Paso 2 -->
+                <div id="content-step-2" class="step-content hidden grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="text-xs font-cinzel text-gold-400 font-bold uppercase tracking-widest block mb-1">Etapa II</span>
+                        <h4 class="font-cinzel text-2xl sm:text-3xl font-bold text-gold-300 mb-4">Transferencia de la Grafia y Trazado</h4>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            El dibujo proveniente del *Podlinnik* (manual canónico de los Padres) se transfiere con carbón al levkas blanco.
+                        </p>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            Con un punzón de ágata o acero dulce se graba suavemente el contorno para preservar la exactitud geométrica y teológica durante la aplicación de los pigmentos.
+                        </p>
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden border border-gold-500/30">
+                        <img src="https://cdn.pixabay.com/photo/2017/08/22/17/06/jesus-2669734_1280.jpg" alt="Grafia Sacra" class="w-full h-80 object-cover">
+                    </div>
+                </div>
+
+                <!-- Paso 3 -->
+                <div id="content-step-3" class="step-content hidden grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="text-xs font-cinzel text-gold-400 font-bold uppercase tracking-widest block mb-1">Etapa III</span>
+                        <h4 class="font-cinzel text-2xl sm:text-3xl font-bold text-gold-300 mb-4">Pigmentos Minerales y Capa de Sankir</h4>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            Se muelen minerales nobles (lapislázuli, malaquita, cinabrio) mezclados con emulsión fresca de yema de huevo.
+                        </p>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            Se aplica la base verdosa del rostro llamada **Sankir**. Desde esta oscuridad, mediante veladuras transparentes (*Okhrenie*), la luz del rostro divino comienza a emerger.
+                        </p>
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden border border-gold-500/30">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80" alt="Pigmentos y Sankir" class="w-full h-80 object-cover">
+                    </div>
+                </div>
+
+                <!-- Paso 4 -->
+                <div id="content-step-4" class="step-content hidden grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="text-xs font-cinzel text-gold-400 font-bold uppercase tracking-widest block mb-1">Etapa IV</span>
+                        <h4 class="font-cinzel text-2xl sm:text-3xl font-bold text-gold-300 mb-4">Dorado en Pan de Oro Puro</h4>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            Sobre una capa de bolo armenio (arcilla roja purificada) se aplican láminas de pan de oro fino de 23.75K.
+                        </p>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            Con la piedra de ágata se bruñe la superficie transformando el oro en un espejo fulgurante que simboliza la Luz Increada del Reino de los Cielos.
+                        </p>
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden border border-gold-500/30">
+                        <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80" alt="Dorado al agua" class="w-full h-80 object-cover">
+                    </div>
+                </div>
+
+                <!-- Paso 5 -->
+                <div id="content-step-5" class="step-content hidden grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="text-xs font-cinzel text-gold-400 font-bold uppercase tracking-widest block mb-1">Etapa V</span>
+                        <h4 class="font-cinzel text-2xl sm:text-3xl font-bold text-gold-300 mb-4">Barniz de Olifa y Bendición</h4>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            Una vez curada la pintura, el icono se impregna con **Olifa** (barniz denso tradicional de aceite de linaza hervido con resinas).
+                        </p>
+                        <p class="font-serif text-parchment-200 leading-relaxed mb-4">
+                            El Olifa unifica los tonos, da una calidez profunda y protege la imagen durante siglos. Finalmente, el icono se presenta en el templo para recibir la bendición litúrgica.
+                        </p>
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden border border-gold-500/30">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Barniz Olifa" class="w-full h-80 object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE ICONOS RUSOS -->
+    <section id="galeria" class="py-24 bg-russianBlue-950 border-t border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-cinzel text-xs text-gold-400 font-bold tracking-widest uppercase mb-2">Teología Visual Rusa</h2>
+                <h3 class="font-cinzel text-3xl sm:text-5xl font-bold text-parchment-50">Galería de Iconos Sacros</h3>
+                <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Filtros de la Galería -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-10 font-cinzel text-xs">
+                <button onclick="filterGallery('all')" class="gallery-filter-btn px-5 py-2.5 rounded-full border border-gold-500/40 bg-gold-metallic text-russianBlue-950 font-bold transition-all" data-filter="all">Todos los Iconos</button>
+                <button onclick="filterGallery('pantocrator')" class="gallery-filter-btn px-5 py-2.5 rounded-full border border-gold-500/30 text-parchment-200 hover:text-gold-300 hover:border-gold-500 transition-all" data-filter="pantocrator">Cristo Pantocrátor</button>
+                <button onclick="filterGallery('teotokos')" class="gallery-filter-btn px-5 py-2.5 rounded-full border border-gold-500/30 text-parchment-200 hover:text-gold-300 hover:border-gold-500 transition-all" data-filter="teotokos">Teotokos (Virgen)</button>
+                <button onclick="filterGallery('santos')" class="gallery-filter-btn px-5 py-2.5 rounded-full border border-gold-500/30 text-parchment-200 hover:text-gold-300 hover:border-gold-500 transition-all" data-filter="santos">San Nicolás y Santos</button>
+                <button onclick="filterGallery('fiestas')" class="gallery-filter-btn px-5 py-2.5 rounded-full border border-gold-500/30 text-parchment-200 hover:text-gold-300 hover:border-gold-500 transition-all" data-filter="fiestas">Grandes Fiestas</button>
+            </div>
+
+            <!-- Rejilla de Galería -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="gallery-grid">
+                <!-- Icono 1 -->
+                <div class="gallery-item pantocrator group relative overflow-hidden rounded-lg border border-gold-500/20 bg-russianBlue-900 cursor-pointer" onclick="openLightbox('https://cdn.pixabay.com/photo/2017/08/22/17/06/jesus-2669734_1280.jpg', 'Cristo Pantocrátor de Pskov', 'Taller de Pskov (Siglo XV). Temple al huevo sobre levkas con aureola de oro fino de 24k bruñido con piedra de ágata.')">
+                    <img src="https://cdn.pixabay.com/photo/2017/08/22/17/06/jesus-2669734_1280.jpg" alt="Cristo Pantocrátor Ruso" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-russianBlue-950 via-russianBlue-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-gold-400 font-cinzel text-xs font-bold uppercase tracking-wider">Escuela de Pskov</span>
+                        <h4 class="font-cinzel text-lg font-bold text-parchment-100">Cristo Pantocrátor</h4>
+                        <p class="font-serif text-xs text-parchment-300 mt-1">Temple al huevo y pan de oro puro</p>
+                    </div>
+                </div>
+
+                <!-- Icono 2 -->
+                <div class="gallery-item teotokos group relative overflow-hidden rounded-lg border border-gold-500/20 bg-russianBlue-900 cursor-pointer" onclick="openLightbox('https://cdn.pixabay.com/photo/2015/11/24/19/14/mother-of-perpetual-help-1060612_1280.jpg', 'Madre de Dios de Vladimir (Eleusa)', 'La imagen más venerada de la Iglesia Ortodoxa Rusa. Representación conmovedora de la ternura de la Santísima Virgen con el Niño Jesús.')">
+                    <img src="https://cdn.pixabay.com/photo/2015/11/24/19/14/mother-of-perpetual-help-1060612_1280.jpg" alt="Virgen de Vladimir" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-russianBlue-950 via-russianBlue-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-gold-400 font-cinzel text-xs font-bold uppercase tracking-wider">Teotokos</span>
+                        <h4 class="font-cinzel text-lg font-bold text-parchment-100">Virgen de Vladimir</h4>
+                        <p class="font-serif text-xs text-parchment-300 mt-1">Pigmentos de azurita y cinabrio</p>
+                    </div>
+                </div>
+
+                <!-- Icono 3 -->
+                <div class="gallery-item santos group relative overflow-hidden rounded-lg border border-gold-500/20 bg-russianBlue-900 cursor-pointer" onclick="openLightbox('icon.jpg', 'San Nicolás de Mira el Taumaturgo', 'Patrono insigne de Rusia. Iconografía canónica con vestiduras episcopales, omoforion y el Santo Evangelio.')">
+                    <img src="icon.jpg" alt="San Nicolás Ruso" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-russianBlue-950 via-russianBlue-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-gold-400 font-cinzel text-xs font-bold uppercase tracking-wider">Santo Taumaturgo</span>
+                        <h4 class="font-cinzel text-lg font-bold text-parchment-100">San Nicolás de Mira</h4>
+                        <p class="font-serif text-xs text-parchment-300 mt-1">Veladuras tradicionales en Sankir</p>
+                    </div>
+                </div>
+
+                <!-- Icono 4 -->
+                <div class="gallery-item fiestas group relative overflow-hidden rounded-lg border border-gold-500/20 bg-russianBlue-900 cursor-pointer" onclick="openLightbox('trini-1410.jpg', 'La Santísima Trinidad (San Andrei Rublev)', 'Obra cumbre del arte sagrado ruso del siglo XV. Los tres ángeles hospedados por Abraham contemplando el cáliz divino.')">
+                    <img src="trini-1410.jpg" alt="Trinidad Rublev" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-russianBlue-950 via-russianBlue-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-gold-400 font-cinzel text-xs font-bold uppercase tracking-wider"></span>
+                        <h4 class="font-cinzel text-lg font-bold text-parchment-100">La Santísima Trinidad</h4>
+                        <p class="font-serif text-xs text-parchment-300 mt-1">Canon clásico de San Andrei Rublev</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO 100% FUNCIONAL A CORREO CON FORMSUBMIT -->
+    <section id="admision" class="py-24 bg-russianBlue-900 relative border-t border-gold-500/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-cinzel text-xs text-gold-400 font-bold tracking-widest uppercase mb-2">Inscripción y Admisión</h2>
+                <h3 class="font-cinzel text-3xl sm:text-5xl font-bold text-parchment-50">Solicitud Vocacional de Ingreso</h3>
+                <p class="font-serif text-parchment-200 text-lg mt-3">Completa el siguiente formulario para postularte a los talleres de iconografía sagrada.</p>
+                <div class="w-24 h-0.5 bg-gold-500 mx-auto mt-4"></div>
+            </div>
+
+            <div class="bg-russianBlue-950 border border-gold-500/30 rounded-2xl p-8 sm:p-12 shadow-2xl">
+                <!-- Formulario funcional apuntando a josefranshdez@gmail.com mediante FormSubmit -->
+                <form action="https://formsubmit.co/josefranshdez@gmail.com" method="POST" class="space-y-6">
+                    <!-- Configuración para FormSubmit -->
+                    <input type="hidden" name="_next" value="#exito">
+                    <input type="hidden" name="_subject" value="Nueva Solicitud de Cursos - Iconografía Ortodoxa Rusa">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-gold-300 uppercase tracking-wider mb-2">Nombre Completo *</label>
+                            <input type="text" name="Nombre" required class="w-full bg-russianBlue-900 border border-gold-500/30 rounded px-4 py-3 text-parchment-100 focus:outline-none focus:border-gold-400 transition-colors" placeholder="Tu nombre completo">
+                        </div>
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-gold-300 uppercase tracking-wider mb-2">Correo Electrónico *</label>
+                            <input type="email" name="Email" required class="w-full bg-russianBlue-900 border border-gold-500/30 rounded px-4 py-3 text-parchment-100 focus:outline-none focus:border-gold-400 transition-colors" placeholder="tu@correo.com">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-gold-300 uppercase tracking-wider mb-2">Teléfono / WhatsApp *</label>
+                            <input type="tel" name="Telefono" required class="w-full bg-russianBlue-900 border border-gold-500/30 rounded px-4 py-3 text-parchment-100 focus:outline-none focus:border-gold-400 transition-colors" placeholder="+52 123 456 7890">
+                        </div>
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-gold-300 uppercase tracking-wider mb-2">Ciudad y País *</label>
+                            <input type="text" name="Ubicacion" required class="w-full bg-russianBlue-900 border border-gold-500/30 rounded px-4 py-3 text-parchment-100 focus:outline-none focus:border-gold-400 transition-colors" placeholder="Ej. Ciudad de México, México">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-gold-300 uppercase tracking-wider mb-2">Nivel de Experiencia en Arte / Pintura</label>
+                            <select name="Experiencia" class="w-full bg-russianBlue-900 border border-gold-500/30 rounded px-4 py-3 text-parchment-100 focus:outline-none focus:border-gold-400 transition-colors font-sans">
+                                <option>Sin experiencia previa (Iniciación desde cero)</option>
+                                <option>Principiante en dibujo o pintura</option>
+                                <option>Intermedio / Experiencia en artes plásticas</option>
+                                <option>Avanzado / Iconógrafo practicante</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-cinzel text-xs font-bold text-gold-300 uppercase tracking-wider mb-2">Curso o Taller de Interés *</label>
+                            <select name="Curso_Interes" class="w-full bg-russianBlue-900 border border-gold-500/30 rounded px-4 py-3 text-parchment-100 focus:outline-none focus:border-gold-400 transition-colors font-sans">
+                                <option>1. Introducción al Levkas y Dibujo Sacro (Principiantes)</option>
+                                <option>2. Temple al Huevo, Pigmentos y Dorado (Intermedio)</option>
+                                <option>3. Iconografía de la Teotokos y Pantocrátor (Avanzado)</option>
+                                <option>Consulta General de Formación Litúrgica</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-cinzel text-xs font-bold text-gold-300 uppercase tracking-wider mb-2">Motivación Espiritual y Vocacional *</label>
+                        <textarea name="Motivacion_Espiritual" rows="4" required class="w-full bg-russianBlue-900 border border-gold-500/30 rounded px-4 py-3 text-parchment-100 focus:outline-none focus:border-gold-400 transition-colors" placeholder="Cuéntanos tus razones espirituales o vocacionales para inscribirte en el arte sagrado de la Iglesia Ortodoxa..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gold-metallic text-russianBlue-950 font-cinzel font-bold text-xs uppercase tracking-widest rounded hover:brightness-110 transition-all shadow-xl">
+                        Enviar Solicitud con Bendición
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER LITÚRGICO -->
+    <footer class="bg-russianBlue-950 text-parchment-300 border-t border-gold-500/20 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full border border-gold-500/60 flex items-center justify-center bg-crimson-900">
+                            <svg class="w-5 h-5 fill-gold-400" viewBox="0 0 24 24">
+                                <path d="M11 2h2v3h4v2h-4v2h5v2h-5v5h3v2h-3v4h-2v-4H8v-2h3v-5H6v-2h5V7H7V5h4V2zm-2 15h6l-6 2v-2z"/>
+                            </svg>
+                        </div>
+                        <span class="font-cinzel text-lg font-bold text-gold-metallic">СВЯТАЯ ИКОНА</span>
+                    </div>
+                    <p class="font-serif text-sm text-parchment-300 leading-relaxed">
+                        Taller consagrado a la conservación e instrucción de la iconografía sagrada canónica de la Iglesia Ortodoxa Rusa.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-gold-300 uppercase tracking-wider mb-4">Secciones Sacras</h4>
+                    <ul class="space-y-2 font-serif text-sm">
+                        <li><a href="#inicio" class="hover:text-gold-400 transition-colors">Inicio</a></li>
+                        <li><a href="#tradicion" class="hover:text-gold-400 transition-colors">La Sacra Tradición</a></li>
+                        <li><a href="#cursos" class="hover:text-gold-400 transition-colors">Cursos de Iconografía</a></li>
+                        <li><a href="#galeria" class="hover:text-gold-400 transition-colors">Galería de Iconos</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-gold-300 uppercase tracking-wider mb-4">Contacto Directo</h4>
+                    <ul class="space-y-2 font-serif text-sm">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-gold-500"></i> josefranshdez@gmail.com</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-church text-gold-500"></i> Taller Ortodoxo San Andrei Rublev</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-gold-300 uppercase tracking-wider mb-4">Oración del Iconógrafo</h4>
+                    <p class="font-serif text-xs text-parchment-300 leading-relaxed italic">
+                        «Señor Jesús, ilumina mi mente y guía mis manos para que dibuje tu imagen sagrada en el honor y gloria de tu Santa Iglesia.»
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-russianBlue-900 pt-8 text-center">
+                <p class="font-serif italic text-gold-400 text-sm mb-2">«Слава Богу за всё (Gloria a Dios por todas las cosas)»</p>
+                <p class="font-sans text-xs text-parchment-300">
+                    &copy; 2026 Escuela de Iconografía Tradicional Ortodoxa Rusa. Fidelidad al Canon Litúrgico.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE TEMARIOS DE CURSOS -->
+    <div id="course-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-russianBlue-950/85 backdrop-blur-md p-4">
+        <div class="bg-russianBlue-900 border border-gold-500/40 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeCourseModal()" class="absolute top-4 right-4 text-parchment-300 hover:text-gold-400 text-xl p-2" aria-label="Cerrar modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-course-content">
+                <!-- Se llena mediante JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX GALERÍA -->
+    <div id="gallery-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-russianBlue-950/90 backdrop-blur-md p-4" onclick="closeLightbox()">
+        <div class="max-w-4xl w-full text-center relative" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-gold-400 hover:text-parchment-100 text-2xl font-bold">
+                <i class="fa-solid fa-xmark"></i> Cerrar
+            </button>
+            <img id="lightbox-img" src="" alt="Icono Ampliado" class="max-h-[75vh] mx-auto rounded-lg border-2 border-gold-500/40 shadow-2xl object-contain">
+            <h4 id="lightbox-title" class="font-cinzel text-2xl font-bold text-gold-metallic mt-4"></h4>
+            <p id="lightbox-desc" class="font-serif text-parchment-200 text-sm mt-1 max-w-xl mx-auto"></p>
+        </div>
+    </div>
+
+    <!-- SCRIPTS INTERACTIVOS -->
+    <script>
+        // Menú Móvil
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Pestañas de la Técnica
+        function selectStep(stepNumber) {
+            for (let i = 1; i <= 5; i++) {
+                const tab = document.getElementById(`tab-step-${i}`);
+                const content = document.getElementById(`content-step-${i}`);
+                if (tab && content) {
+                    if (i === stepNumber) {
+                        tab.className = "step-tab flex-shrink-0 px-5 py-3 rounded-t-lg font-cinzel text-xs font-bold transition-all border-b-2 border-gold-500 bg-russianBlue-950 text-gold-300";
+                        content.classList.remove('hidden');
+                    } else {
+                        tab.className = "step-tab flex-shrink-0 px-5 py-3 rounded-t-lg font-cinzel text-xs font-bold transition-all border-b-2 border-transparent text-parchment-300 hover:text-gold-300";
+                        content.classList.add('hidden');
+                    }
+                }
+            }
+        }
+
+        // Filtro de la Galería
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.gallery-filter-btn');
+
+            buttons.forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = "gallery-filter-btn px-5 py-2.5 rounded-full border border-gold-500/40 bg-gold-metallic text-russianBlue-950 font-bold transition-all";
+                } else {
+                    btn.className = "gallery-filter-btn px-5 py-2.5 rounded-full border border-gold-500/30 text-parchment-200 hover:text-gold-300 hover:border-gold-500 transition-all";
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Lightbox
+        function openLightbox(imgUrl, title, description) {
+            document.getElementById('lightbox-img').src = imgUrl;
+            document.getElementById('lightbox-title').innerText = title;
+            document.getElementById('lightbox-desc').innerText = description;
+            document.getElementById('gallery-modal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('gallery-modal').classList.add('hidden');
+        }
+
+        // Datos de Cursos para Modal
+        const courseData = {
+            'curso-1': {
+                title: 'Introducción al Levkas y Dibujo Sacro',
+                level: 'Nivel Principiante',
+                desc: 'Iniciación litúrgica y técnica en la preparación de la materia noble sobre la que se fijará la imagen santa.',
+                topics: [
+                    'Simbología teológica de la madera de tilo y labrado del Kovcheg.',
+                    'Encolado con cola de conejo mineral y colocación del lienzo Pavoloka.',
+                    'Aplicación rigurosa de 12 capas de Levkas (alabastro).',
+                    'Lijado ceremonial a espejo para la recepción de la luz.'
+                ]
+            },
+            'curso-2': {
+                title: 'Temple al Huevo, Pigmentos y Dorado',
+                level: 'Nivel Intermedio',
+                desc: 'Alquimia canónica de pigmentos minerales puros, emulsión de yema y dorado tradicional en pan de oro.',
+                topics: [
+                    'Molienda manual en moleta de azurita, malaquita, cinabrio y ocres.',
+                    'Preparación de emulsión de yema de huevo fresco y vino.',
+                    'Técnica del Bolo Armenio y dorado al agua con soplado.',
+                    'Bruñido con piedra de ágata fina e incisión de la aureola.'
+                ]
+            },
+            'curso-3': {
+                title: 'Iconografía de la Teotokos y el Pantocrátor',
+                level: 'Nivel Avanzado',
+                desc: 'Formación superior enfocada en la creación de los rostros sagrados, miradas contemplativas y consagración en Olifa.',
+                topics: [
+                    'Estudio de las proporciones del rostro divina del Pantocrátor y Teotokos.',
+                    'Modelado de capas de Sankir, Okhrenie e iluminación Psimithia.',
+                    'Trazo exquisito de líneas de oro de Asist en vestiduras divinas.',
+                    'Sellado final y conservación mediante barniz de Olifa caliente.'
+                ]
+            }
+        };
+
+        function openCourseModal(courseKey) {
+            const course = courseData[courseKey];
+            if (!course) return;
+
+            const modalContent = document.getElementById('modal-course-content');
+            modalContent.innerHTML = `
+                <span class="text-xs font-cinzel text-gold-400 font-bold uppercase tracking-wider block mb-1">${course.level}</span>
+                <h3 class="font-cinzel text-2xl font-bold text-gold-300 mb-2">${course.title}</h3>
+                <p class="font-serif text-parchment-200 text-sm mb-6">${course.desc}</p>
+                <h4 class="font-cinzel text-xs font-bold text-gold-400 uppercase tracking-wider mb-3">Módulos del Programa:</h4>
+                <ul class="space-y-3 font-serif text-sm text-parchment-200 mb-6">
+                    ${course.topics.map(t => `<li class="flex items-start gap-2"><svg class="w-4 h-4 fill-gold-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24"><path d="M11 2h2v3h4v2h-4v2h5v2h-5v5h3v2h-3v4h-2v-4H8v-2h3v-5H6v-2h5V7H7V5h4V2zm-2 15h6l-6 2v-2z"/></svg> <span>${t}</span></li>`).join('')}
+                </ul>
+                <a href="#admision" onclick="closeCourseModal()" class="block text-center py-3 bg-gold-metallic text-russianBlue-950 font-cinzel font-bold text-xs uppercase tracking-wider rounded hover:brightness-110">Solicitar Admisión a este Curso</a>
+            `;
+            document.getElementById('course-modal').classList.remove('hidden');
+        }
+
+        function closeCourseModal() {
+            document.getElementById('course-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
